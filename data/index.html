@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Smart Home Automation</h1>
+    
+    <!-- System Section -->
+    <section id="system">
+        <h2>System</h2>
+        <label for="datetimePicker">Set Current Time:</label>
+        <input type="datetime-local" id="datetimePicker">
+        <button id="setTimeButton">Set Time</button>
+    </section>
+
+    <!-- Schedule Section -->
+    <section id="schedule">
+        <h2>Activation Schedule</h2>
+        <div class="table-container">
+            <table id="scheduleTable">
+                <thead>
+                    <tr>
+                        <th>Hour</th>
+                        <th>Monday</th>
+                        <th>Tuesday</th>
+                        <th>Wednesday</th>
+                        <th>Thursday</th>
+                        <th>Friday</th>
+                        <th>Saturday</th>
+                        <th>Sunday</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rows will be inserted dynamically -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: #4CAF50;
+}
+
+#patternValue {
+    font-weight: bold;
+}
+
+#system, #schedule {
+    margin-top: 20px;
+}
+
+#datetimePicker {
+    padding: 5px;
+    margin-top: 10px;
+}
+
+#setTimeButton {
+    padding: 5px 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+
+#setTimeButton:hover {
+    background-color: #45a049;
+}
+
+/* Schedule Table Styling */
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.highlight {
+    background-color: #ffcc00 !important;
+    font-weight: bold;
+}
