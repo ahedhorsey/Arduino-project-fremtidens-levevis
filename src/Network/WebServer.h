@@ -24,11 +24,11 @@ public:
 
 private:
     // Network credentials for the Access Point (AP) mode
-    const char *ssid = "Store Bryster";      // SSID (Network Name) for the AP
-    const char *password = "12zw345678";    // Password for the AP
+    const char *ssid = "AI Heating";      // SSID (Network Name) for the AP
+    const char *password = "12345678";    // Password for the AP
     const byte DNS_PORT = 53;             // DNS port for captive portal (typically 53)
 
-    // Web server and DNS server objectso321
+    // Web server and DNS server objects
     AsyncWebServer server;     // Web server that listens on port 80
     DNSServer dnsServer;       // DNS server to handle requests to a captive portal
 
