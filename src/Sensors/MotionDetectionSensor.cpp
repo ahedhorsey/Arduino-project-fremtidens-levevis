@@ -8,19 +8,29 @@ MotionDetectionSensor::MotionDetectionSensor(int pinIn, int pinOut, int cooldown
 }
 
 bool MotionDetectionSensor::activated() {
- //   unsigned long currentTime = millis();  // Get the current time in milliseconds
+    unsigned long currentTime = millis();  // Get the current time in milliseconds
+    int totalDistance=0; 
 
-    // Check if the sensor is triggered (LOW) and if the cooldown period has passed
-    // if (digitalRead(pin) == LOW && (currentTime - lastActivationTime) >= (cooldown * 1000)) {
-    //     lastActivationTime = currentTime;
-    //     waitingForCoolDown = true;
-    //     return true;
-    // }
+    for (int index = 0; index < 10; index++) {
+        totalDistance += readDistinceFromSensor();
+    }
+    float distance = totalDistance / 10;
+
+    
+    Serial.print("MotionSensor detection  value: ");
+    Serial.println(distance);
+
+    if (distance <= 5 && (currentTime - lastActivationTime) >= (cooldown * 1000)) {
+        lastActivationTime = currentTime;
+        waitingForCoolDown = true;
+        return true;
+    }
 
     return false;  // Return false if the sensor has not been activated
 }
 
 int MotionDetectionSensor::readDistinceFromSensor() {
+
     // Send a 10µs pulse to trigger pin
     digitalWrite(triggerPin, LOW);
     delayMicroseconds(2);
