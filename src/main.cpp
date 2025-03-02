@@ -22,7 +22,7 @@ HeatingController heatingController(heatingControllerPin);  // Heating controlle
 LightingController lightController(lightControllerPin);  // Lighting controller
 LocalTime localTime;  // Local time management
 DetectionSensor detectionSensor(detectionSensorPin, detectionCoolDownInSeconds);  // Sensor for detecting activity
-ManualDetectionSensor ManualDetectionSensor(ManualDetectionSensorpin, ManualDetectionSensorCoolDownInSeconds))
+ManualDetectionSensor ManualDetectionSensor(ManualDetectionSensorpin, ManualDetectionSensorCoolDownInSeconds); // manual Sensor for detecting activity
 // Weekday names for displaying the current day of the week
 const char *weekdayNames[] = {
     "Monday",    // 0
