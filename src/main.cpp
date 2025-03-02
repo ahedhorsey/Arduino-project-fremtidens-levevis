@@ -25,7 +25,7 @@ LocalTime localTime;  // Local time management
 HeatingController heatingController(heatingControllerPin);  // Heating controller
 LightingController lightController(lightControllerPin);  // Lighting controller
 
-MotionDetectionSensor detectionSensor(motionDetectionSensorReaderPin,motionDetectionSensorTriggerPin, motionDetectionCoolDownInSeconds);  // Sensor for detecting activity
+MotionDetectionSensor motionDetectionSensor(motionDetectionSensorReaderPin,motionDetectionSensorTriggerPin, motionDetectionCoolDownInSeconds);  // Sensor for detecting activity
 ManualDetectionSensor manualDetectionSensor(manualDetectionSensorpin, manualDetectionSensorCoolDownInSeconds); // manual Sensor for detecting activity
 
 
@@ -69,8 +69,8 @@ void loop()
 {
   webServer.update();  // Handle web server requests
 
-  // Check if the detection sensor is activated
-  if (manualDetectionSensor.activated())
+  // Check if a detection sensor is activated
+  if (manualDetectionSensor.activated() || motionDetectionSensor.activated())
   {
     // Print detection time and activate necessary controllers
     Serial.print("Detection at [");
@@ -86,7 +86,7 @@ void loop()
   }
 
   // If the detection sensor is not in cooldown, deactivate controllers
-  if (!detectionSensor.isOnCooldown())
+  if (!manualDetectionSensor.isOnCooldown() && !motionDetectionSensor.isOnCooldown())
   {
     if (lightController.isActive())   lightController.deactivate();
     if (heatingController.isActive()) heatingController.deactivate();
