@@ -13,6 +13,7 @@ bool ManualDetectionSensor::activated()
     // Check if the sensor is triggered (LOW) and if the cooldown period has passed
     if (digitalRead(pin) == LOW && (currentTime - lastActivationTime) >= (cooldown * 1000))
     {
+        Serial.println("knappen er trykket");
         lastActivationTime = currentTime;
         waitingForCoolDown = true;
         return true;
