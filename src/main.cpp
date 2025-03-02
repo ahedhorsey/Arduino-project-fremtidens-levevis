@@ -5,13 +5,16 @@
 #include <Controllers/LightingController.h>
 #include <Controllers/HeatingController.h>
 #include <Sensors/DetectionSensor.h>
+#include <Sensors/ManualDetectionSensor.h>
+
 
 // Pin assignments for controllers and sensors
 int lightControllerPin = 15;
 int heatingControllerPin = 13;
 int detectionSensorPin = 5;
 int detectionCoolDownInSeconds = 10;
-
+int ManualDetectionSensorpin = 14;
+int ManualDetectionSensorCoolDownInSeconds = 10;
 // Initialize the objects
 WebServer webServer;  // Web server for handling HTTP requests
 TimeManager timeManager;  // Manages scheduling data
@@ -19,7 +22,7 @@ HeatingController heatingController(heatingControllerPin);  // Heating controlle
 LightingController lightController(lightControllerPin);  // Lighting controller
 LocalTime localTime;  // Local time management
 DetectionSensor detectionSensor(detectionSensorPin, detectionCoolDownInSeconds);  // Sensor for detecting activity
-
+ManualDetectionSensor ManualDetectionSensor(ManualDetectionSensorpin, ManualDetectionSensorCoolDownInSeconds))
 // Weekday names for displaying the current day of the week
 const char *weekdayNames[] = {
     "Monday",    // 0
