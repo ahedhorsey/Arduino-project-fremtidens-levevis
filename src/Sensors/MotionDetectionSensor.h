@@ -11,7 +11,6 @@ private:
     int cooldown;               // Cooldown period in milliseconds after activation
     unsigned long lastActivationTime;  // Timestamp of the last activation
     bool waitingForCoolDown;   // Flag to track if the sensor is in cooldown state
-    void (*onActivation)();    // Reference to function with no arguments
     int readDistinceFromSensor(); // Function to read distance
 public:
     // Constructor to initialize the sensor pin and cooldown time
@@ -21,7 +20,7 @@ public:
     void setEventHandler(void (*onActivationFunction)());
 
     // Method to check if the sensor has been activated
-    void update();
+    bool activated();
 
     // Method to check if the sensor is in cooldown state
     bool isOnCooldown();
