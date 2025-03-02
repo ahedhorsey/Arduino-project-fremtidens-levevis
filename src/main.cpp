@@ -4,25 +4,31 @@
 #include <Time/LocalTime.h>
 #include <Controllers/LightingController.h>
 #include <Controllers/HeatingController.h>
-#include <Sensors/DetectionSensor.h>
+#include <Sensors/MotionDetectionSensor.h>
 #include <Sensors/ManualDetectionSensor.h>
 
 
 // Pin assignments for controllers and sensors
 int lightControllerPin = 15;
 int heatingControllerPin = 13;
-int detectionSensorPin = 5;
-int detectionCoolDownInSeconds = 10;
-int ManualDetectionSensorpin = 14;
-int ManualDetectionSensorCoolDownInSeconds = 10;
+int motionDetectionSensorTriggerPin = 5;
+int motionDetectionSensorReaderPin = 4;
+int motionDetectionCoolDownInSeconds = 10;
+int manualDetectionSensorpin = 14;
+int manualDetectionSensorCoolDownInSeconds = 10;
+
 // Initialize the objects
 WebServer webServer;  // Web server for handling HTTP requests
 TimeManager timeManager;  // Manages scheduling data
+LocalTime localTime;  // Local time management
+
 HeatingController heatingController(heatingControllerPin);  // Heating controller
 LightingController lightController(lightControllerPin);  // Lighting controller
-LocalTime localTime;  // Local time management
-DetectionSensor detectionSensor(detectionSensorPin, detectionCoolDownInSeconds);  // Sensor for detecting activity
-ManualDetectionSensor ManualDetectionSensor(ManualDetectionSensorpin, ManualDetectionSensorCoolDownInSeconds); // manual Sensor for detecting activity
+
+MotionDetectionSensor detectionSensor(motionDetectionSensorReaderPin,motionDetectionSensorTriggerPin, motionDetectionCoolDownInSeconds);  // Sensor for detecting activity
+ManualDetectionSensor manualDetectionSensor(manualDetectionSensorpin, manualDetectionSensorCoolDownInSeconds); // manual Sensor for detecting activity
+
+
 // Weekday names for displaying the current day of the week
 const char *weekdayNames[] = {
     "Monday",    // 0
@@ -64,7 +70,7 @@ void loop()
   webServer.update();  // Handle web server requests
 
   // Check if the detection sensor is activated
-  if (detectionSensor.activated())
+  if (manualDetectionSensor.activated())
   {
     // Print detection time and activate necessary controllers
     Serial.print("Detection at [");

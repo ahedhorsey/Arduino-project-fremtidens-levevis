@@ -10,7 +10,6 @@ private:
     int cooldown;               // Cooldown period in milliseconds after activation
     unsigned long lastActivationTime;  // Timestamp of the last activation
     bool waitingForCoolDown;   // Flag to track if the sensor is in cooldown state
-
 public:
     // Constructor to initialize the sensor pin and cooldown time
     ManualDetectionSensor(int pin, int cooldown);
