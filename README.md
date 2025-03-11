@@ -34,9 +34,9 @@ Ensure you have the following libraries installed in your Arduino IDE:
 - `LocalTime`
 
 ### 3. Initial Setup
-- **Power on the ESP32**, and it will start as an Access Point with the SSID `AI Heating`.
-- **Wi-Fi Password**: `12345678`
-- **Connect** your computer or mobile device to the `AI Heating` Wi-Fi network using the provided password.
+- **Power on the ESP32**, and it will start as an Access Point with the SSID `Ardunio wifi`.
+- **Wi-Fi Password**: `testtest`
+- **Connect** your computer or mobile device to the `Ardunio wifi` Wi-Fi network using the provided password.
 - **Open the browser** and navigate to `192.168.4.1` to access the configuration interface.
 
 ### 4. Configuration
